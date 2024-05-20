@@ -1,0 +1,557 @@
+[gd_scene load_steps=18 format=3 uid="uid://by45tyjaglmsp"]
+
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_7nk61"]
+[ext_resource type="PackedScene" uid="uid://b6ev8dcx56mgj" path="res://nodes/life_count.tscn" id="2_dmacp"]
+[ext_resource type="Texture2D" uid="uid://c18f328b2glqi" path="res://assets/UI/PauseIcon.png" id="2_uj1mv"]
+[ext_resource type="SystemFont" uid="uid://6qb1h1l1641a" path="res://assets/UI/fonts/game_subheading.tres" id="4_wyrm4"]
+[ext_resource type="Texture2D" uid="uid://byq07bmfd2jar" path="res://assets/UI/CustomButtonIcon.png" id="5_os3yk"]
+[ext_resource type="Texture2D" uid="uid://by4wxv0btxquk" path="res://assets/UI/CustomButtonIconFocused.png" id="6_3wu03"]
+[ext_resource type="Texture2D" uid="uid://c6rjenyrn4rbt" path="res://assets/UI/GameOverButtonIcon.png" id="6_y8tks"]
+[ext_resource type="Texture2D" uid="uid://emryb57nqs8g" path="res://assets/UI/Powerups/PowerupContainer.png" id="7_8n4xx"]
+[ext_resource type="Texture2D" uid="uid://b21k3am4rsmlt" path="res://assets/UI/Curses/CurseContainer.png" id="8_5nt21"]
+[ext_resource type="Texture2D" uid="uid://df5qbvebdhhjq" path="res://assets/UI/CustomSliderGrabber.png" id="9_mmwbp"]
+[ext_resource type="Texture2D" uid="uid://c4fds3is7hv" path="res://assets/UI/CustomSliderGrabberHighlighted-export.png" id="10_xdwp7"]
+[ext_resource type="Texture2D" uid="uid://dtydonkxecvho" path="res://assets/UI/CustomSlider.png" id="11_7muph"]
+[ext_resource type="Texture2D" uid="uid://dg8efwowr07d8" path="res://assets/UI/CustomSliderHighlighted.png" id="12_7qn8a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ure0m"]
+texture = ExtResource("11_7muph")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jd466"]
+texture = ExtResource("12_7qn8a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jhkxj"]
+texture = ExtResource("11_7muph")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1yitj"]
+texture = ExtResource("12_7qn8a")
+
+[node name="UI" type="ReferenceRect"]
+process_mode = 3
+process_priority = -1
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+border_color = Color(1, 0, 0, 0)
+editor_only = false
+script = ExtResource("1_7nk61")
+lifeCountScene = ExtResource("2_dmacp")
+bgmName = "Music"
+sfxName = "Sound Effects"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
+z_index = 2
+z_as_relative = false
+offset_left = 17.0
+offset_top = 18.0
+offset_right = 81.0
+offset_bottom = 82.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_uj1mv")
+texture_pressed = ExtResource("2_uj1mv")
+texture_hover = ExtResource("2_uj1mv")
+texture_disabled = ExtResource("2_uj1mv")
+texture_focused = ExtResource("2_uj1mv")
+
+[node name="LevelCounter" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 257.0
+offset_right = 321.0
+offset_bottom = 26.0
+theme_override_colors/default_color = Color(0, 0.772549, 0.905882, 1)
+theme_override_fonts/normal_font = ExtResource("4_wyrm4")
+text = "Lv: 1"
+
+[node name="ScoreCounter" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 451.0
+offset_right = 600.0
+offset_bottom = 26.0
+theme_override_colors/default_color = Color(0, 0.772549, 0.905882, 1)
+theme_override_fonts/normal_font = ExtResource("4_wyrm4")
+text = "Score: 0"
+
+[node name="PauseMenu" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PausedLabel" type="Label" parent="CanvasLayer/PauseMenu"]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 371.0
+offset_right = 294.0
+offset_bottom = 411.0
+scale = Vector2(2.33522, 2.48999)
+theme_override_colors/font_color = Color(0, 0.772549, 0.905882, 1)
+theme_override_fonts/font = ExtResource("4_wyrm4")
+text = "Paused"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ResumeButton" type="TextureButton" parent="CanvasLayer/PauseMenu"]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 445.0
+offset_right = 489.0
+offset_bottom = 509.0
+scale = Vector2(0.578125, 0.818182)
+focus_neighbor_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_os3yk")
+texture_focused = ExtResource("6_3wu03")
+
+[node name="ResumeLabel" type="Label" parent="CanvasLayer/PauseMenu/ResumeButton"]
+layout_mode = 0
+offset_top = 4.88892
+offset_right = 153.0
+offset_bottom = 47.8889
+scale = Vector2(1.67434, 1.18367)
+theme_override_colors/font_color = Color(0.760784, 0, 0.741176, 1)
+theme_override_fonts/font = ExtResource("4_wyrm4")
+text = "Resume"
+horizontal_alignment = 1
+
+[node name="OptionsButton" type="TextureButton" parent="CanvasLayer/PauseMenu"]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 492.0
+offset_right = 489.0
+offset_bottom = 532.0
+scale = Vector2(0.577299, 0.97561)
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../MainMenuButton")
+focus_next = NodePath("../MainMenuButton")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_os3yk")
+texture_focused = ExtResource("6_3wu03")
+
+[node name="OptionsLabel" type="Label" parent="CanvasLayer/PauseMenu/OptionsButton"]
+layout_mode = 0
+offset_top = 6.14999
+offset_right = 153.0
+offset_bottom = 49.15
+scale = Vector2(1.68, 1)
+theme_override_colors/font_color = Color(0.760784, 0, 0.741176, 1)
+theme_override_fonts/font = ExtResource("4_wyrm4")
+text = "Options"
+horizontal_alignment = 1
+
+[node name="MainMenuButton" type="TextureButton" parent="CanvasLayer/PauseMenu"]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 542.0
+offset_right = 489.0
+offset_bottom = 582.0
+scale = Vector2(0.577299, 0.97561)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_os3yk")
+texture_focused = ExtResource("6_3wu03")
+
+[node name="MainMenuLabel" type="Label" parent="CanvasLayer/PauseMenu/MainMenuButton"]
+layout_mode = 0
+offset_top = 6.14999
+offset_right = 153.0
+offset_bottom = 49.15
+scale = Vector2(1.68, 1)
+theme_override_colors/font_color = Color(0.760784, 0, 0.741176, 1)
+theme_override_fonts/font = ExtResource("4_wyrm4")
+text = "Main Menu"
+horizontal_alignment = 1
+
+[node name="GameOverPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/GameOverPanel"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 346.0
+offset_right = 288.0
+offset_bottom = 365.0
+scale = Vector2(2.33522, 2.48999)
+theme_override_colors/font_color = Color(1, 0.301961, 0.235294, 1)
+theme_override_fonts/font = ExtResource("4_wyrm4")
+text = "Game Over"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PlayAgainButton" type="TextureButton" parent="CanvasLayer/GameOverPanel"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 475.0
+offset_right = 486.0
+offset_bottom = 539.0
+scale = Vector2(0.578125, 0.818182)
+focus_neighbor_bottom = NodePath("../MainMenuButton")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_y8tks")
+texture_focused = ExtResource("6_3wu03")
+
+[node name="PlayAgainLabel" type="Label" parent="CanvasLayer/GameOverPanel/PlayAgainButton"]
+layout_mode = 0
+offset_top = 4.88892
+offset_right = 153.0
+offset_bottom = 47.8889
+scale = Vector2(1.67434, 1.18367)
+theme_override_colors/font_color = Color(1, 0.705882, 0.670588, 1)
+theme_override_fonts/font = ExtResource("4_wyrm4")
+text = "Play Again"
+horizontal_alignment = 1
+
+[node name="MainMenuButton" type="TextureButton" parent="CanvasLayer/GameOverPanel"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 524.0
+offset_right = 486.0
+offset_bottom = 564.0
+scale = Vector2(0.577299, 0.97561)
+focus_neighbor_top = NodePath("../PlayAgainButton")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_y8tks")
+texture_focused = ExtResource("6_3wu03")
+
+[node name="MainMenuLabel" type="Label" parent="CanvasLayer/GameOverPanel/MainMenuButton"]
+layout_mode = 0
+offset_top = 6.14999
+offset_right = 153.0
+offset_bottom = 49.15
+scale = Vector2(1.68, 1)
+theme_override_colors/font_color = Color(1, 0.705882, 0.670588, 1)
+theme_override_fonts/font = ExtResource("4_wyrm4")
+text = "Main Menu"
+horizontal_alignment = 1
+
+[node name="FinalScoreLabel" type="Label" parent="CanvasLayer/GameOverPanel"]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 408.0
+offset_right = 372.0
+offset_bottom = 434.0
+theme_override_colors/font_color = Color(1, 0.705882, 0.670588, 1)
+theme_override_fonts/font = ExtResource("4_wyrm4")
+text = "Score: 0"
+horizontal_alignment = 1
+
+[node name="WinPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WinLabel" type="Label" parent="CanvasLayer/WinPanel"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 294.0
+offset_right = 288.0
+offset_bottom = 332.0
+scale = Vector2(2.33522, 2.48999)
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_wyrm4")
+text = "Boss Defeated"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PlayAgainButton" type="TextureButton" parent="CanvasLayer/WinPanel"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 475.0
+offset_right = 486.0
+offset_bottom = 539.0
+scale = Vector2(0.578125, 0.818182)
+focus_neighbor_bottom = NodePath("../MainMenuButton")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_os3yk")
+texture_focused = ExtResource("6_3wu03")
+
+[node name="PlayAgainLabel" type="Label" parent="CanvasLayer/WinPanel/PlayAgainButton"]
+layout_mode = 0
+offset_top = 4.88892
+offset_right = 153.0
+offset_bottom = 47.8889
+scale = Vector2(1.67434, 1.18367)
+theme_override_colors/font_color = Color(1, 0, 1, 1)
+theme_override_fonts/font = ExtResource("4_wyrm4")
+text = "Play Again"
+horizontal_alignment = 1
+
+[node name="MainMenuButton" type="TextureButton" parent="CanvasLayer/WinPanel"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 524.0
+offset_right = 486.0
+offset_bottom = 564.0
+scale = Vector2(0.577299, 0.97561)
+focus_neighbor_top = NodePath("../PlayAgainButton")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_os3yk")
+texture_focused = ExtResource("6_3wu03")
+
+[node name="MainMenuLabel" type="Label" parent="CanvasLayer/WinPanel/MainMenuButton"]
+layout_mode = 0
+offset_top = 6.14999
+offset_right = 153.0
+offset_bottom = 49.15
+scale = Vector2(1.68, 1)
+theme_override_colors/font_color = Color(1, 0, 1, 1)
+theme_override_fonts/font = ExtResource("4_wyrm4")
+text = "Main Menu"
+horizontal_alignment = 1
+
+[node name="FinalScoreLabel" type="Label" parent="CanvasLayer/WinPanel"]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 408.0
+offset_right = 372.0
+offset_bottom = 434.0
+theme_override_colors/font_color = Color(0.643137, 1, 0.996078, 1)
+theme_override_fonts/font = ExtResource("4_wyrm4")
+text = "Score: 0"
+horizontal_alignment = 1
+
+[node name="PowerupContainer" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -148.0
+offset_top = -69.9999
+offset_right = -108.0
+offset_bottom = -29.9999
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.6695, 1.67879)
+texture = ExtResource("7_8n4xx")
+
+[node name="PowerupIcon" type="TextureRect" parent="CanvasLayer/PowerupContainer"]
+visible = false
+layout_mode = 0
+offset_left = 2.99487
+offset_top = 4.16962
+offset_right = 42.9949
+offset_bottom = 44.1696
+scale = Vector2(0.808436, 0.822826)
+
+[node name="CurseContainer" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -74.0
+offset_top = -70.0001
+offset_right = -34.0
+offset_bottom = -30.0001
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.669, 1.669)
+texture = ExtResource("8_5nt21")
+
+[node name="CurseIcon" type="TextureRect" parent="CanvasLayer/CurseContainer"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.405
+offset_top = -15.2067
+offset_right = 23.595
+offset_bottom = 24.7933
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.786692, 0.799479)
+
+[node name="OptionsInterface" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionsHeading" type="Label" parent="CanvasLayer/OptionsInterface"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -112.0
+offset_top = 65.0
+offset_right = 117.0
+offset_bottom = 151.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0.9912, 0.9912, 1)
+theme_override_fonts/font = ExtResource("4_wyrm4")
+theme_override_font_sizes/font_size = 60
+text = "Options"
+
+[node name="BGMVolLabel" type="Label" parent="CanvasLayer/OptionsInterface"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_top = 343.0
+offset_right = -5.0
+offset_bottom = 393.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0.992157, 1)
+theme_override_fonts/font = ExtResource("4_wyrm4")
+theme_override_font_sizes/font_size = 28
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BGMVolSlider" type="HSlider" parent="CanvasLayer/OptionsInterface"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -109.5
+offset_right = -61.0
+offset_bottom = -77.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_icons/grabber = ExtResource("9_mmwbp")
+theme_override_icons/grabber_highlight = ExtResource("10_xdwp7")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_ure0m")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_jd466")
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="SFXVolLabel" type="Label" parent="CanvasLayer/OptionsInterface"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -253.0
+offset_top = 430.0
+offset_right = -2.0
+offset_bottom = 480.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0.992157, 1)
+theme_override_fonts/font = ExtResource("4_wyrm4")
+theme_override_font_sizes/font_size = 28
+text = "Sound Effects"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXVolSlider" type="HSlider" parent="CanvasLayer/OptionsInterface"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -16.5
+offset_right = -61.0
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_icons/grabber = ExtResource("9_mmwbp")
+theme_override_icons/grabber_highlight = ExtResource("10_xdwp7")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_jhkxj")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_1yitj")
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="ControlsLabel" type="Label" parent="CanvasLayer/OptionsInterface"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -254.0
+offset_top = 514.0
+offset_right = -3.0
+offset_bottom = 564.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0.992157, 1)
+theme_override_fonts/font = ExtResource("4_wyrm4")
+theme_override_font_sizes/font_size = 28
+text = "Controls
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ControlOptions" type="OptionButton" parent="CanvasLayer/OptionsInterface"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 526.0
+offset_right = 566.0
+offset_bottom = 557.0
+theme_override_colors/font_color = Color(1, 0, 1, 1)
+theme_override_fonts/font = ExtResource("4_wyrm4")
+item_count = 2
+selected = 0
+popup/item_0/text = "Kb/Mouse"
+popup/item_0/id = 0
+popup/item_1/text = "Kb/Controller"
+popup/item_1/id = 1
+
+[node name="BackButton" type="TextureButton" parent="CanvasLayer/OptionsInterface"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = 288.5
+offset_right = 122.0
+offset_bottom = 328.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.45068)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_os3yk")
+texture_focused = ExtResource("6_3wu03")
+
+[node name="BackLabel" type="Label" parent="CanvasLayer/OptionsInterface/BackButton"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 3.44666
+offset_right = 255.0
+offset_bottom = 33.4467
+scale = Vector2(1, 0.806987)
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_wyrm4")
+text = "Back
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/TextureButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOverPanel/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOverPanel/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/WinPanel/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/WinPanel/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="value_changed" from="CanvasLayer/OptionsInterface/BGMVolSlider" to="." method="_on_bgm_vol_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/OptionsInterface/SFXVolSlider" to="." method="_on_sfx_vol_slider_value_changed"]
+[connection signal="item_selected" from="CanvasLayer/OptionsInterface/ControlOptions" to="." method="_on_control_options_item_selected"]
+[connection signal="pressed" from="CanvasLayer/OptionsInterface/BackButton" to="." method="_on_back_button_pressed"]

@@ -1,87 +1,162 @@
-[gd_scene load_steps=24 format=3 uid="uid://eu3b6h326b4b"]
+[gd_scene load_steps=40 format=3 uid="uid://bpaxnyd1tdmxe"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_m52gn"]
-[ext_resource type="Texture2D" uid="uid://ba2mkwk5jdfxp" path="res://assets/Enemy.png" id="1_to1yy"]
-[ext_resource type="PackedScene" uid="uid://dfc84ckt16wow" path="res://nodes/bullet.tscn" id="2_yxds1"]
+[ext_resource type="PackedScene" uid="uid://bbwfo67k6imi6" path="res://nodes/bullet.tscn" id="2_yxds1"]
+[ext_resource type="PackedScene" uid="uid://ct0s05l6kyqbn" path="res://nodes/powerup.tscn" id="3_yc7vu"]
+[ext_resource type="Texture2D" uid="uid://ba2mkwk5jdfxp" path="res://assets/Enemies/Enemy.png" id="3_yx85k"]
+[ext_resource type="Texture2D" uid="uid://c0okcoxrhgvx3" path="res://assets/Enemies/Basic Ship/Basic Enemy frame 1.svg" id="4_720fu"]
+[ext_resource type="Shader" path="res://textures/neon.gdshader" id="4_ddaqq"]
+[ext_resource type="Texture2D" uid="uid://cjgbl8afy2efl" path="res://assets/Enemies/Basic Ship/Basic Enemy frame 2.svg" id="5_cq3p0"]
+[ext_resource type="Texture2D" uid="uid://drlcewihn4yge" path="res://assets/Enemies/Basic Ship/Basic Enemy frame 3.svg" id="6_xrvdb"]
+[ext_resource type="Texture2D" uid="uid://drqldt4i8hc8b" path="res://assets/Enemies/Basic Ship/Basic Enemy frame 4.svg" id="7_1riuc"]
+[ext_resource type="Texture2D" uid="uid://cs5asbivrdbpd" path="res://assets/Enemies/Gigabyte/Gigabyte frame 1.svg" id="8_26l3j"]
+[ext_resource type="Texture2D" uid="uid://dqyot54os3qcv" path="res://assets/Enemies/Gigabyte/Gigabyte frame 2.svg" id="9_nsecx"]
+[ext_resource type="Texture2D" uid="uid://b22unoy85n0s3" path="res://assets/Enemies/Gigabyte/Gigabyte frame 3.svg" id="10_euxad"]
+[ext_resource type="Texture2D" uid="uid://bcrfpwn8li4lv" path="res://assets/Enemies/Gigabyte/Gigabyte frame 4.svg" id="11_mjvwu"]
+[ext_resource type="Texture2D" uid="uid://7ihwkm6ysckg" path="res://assets/Enemies/Megabyte/Megabyte frame 1.svg" id="12_enpql"]
+[ext_resource type="Texture2D" uid="uid://ctanppjcjl1ge" path="res://assets/Enemies/Megabyte/Megabyte frame 2.svg" id="13_ubfer"]
+[ext_resource type="Texture2D" uid="uid://yaw0hq61b3r3" path="res://assets/Enemies/Megabyte/Megabyte frame 3.svg" id="14_8723t"]
+[ext_resource type="Texture2D" uid="uid://m8qfv1ecdpxb" path="res://assets/Enemies/Megabyte/Megabyte frame 4.svg" id="15_rdnv1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q6443"]
+resource_local_to_scene = true
+shader = ExtResource("4_ddaqq")
+shader_parameter/glow_color = Color(0, 0.705882, 0.705882, 1)
+shader_parameter/glow_power = 20.0
+shader_parameter/glow_shift = 1.0
+shader_parameter/glow_radius = 5.0
+shader_parameter/texture_size = Vector2(256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qvxsb"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uu5b6"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ovid5"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ck5ey"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qttmh"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o27t5"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v4372"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1gvxc"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wpspk"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5put2"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cxc8b"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(640, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2bfwa"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(704, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ux4ht"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(768, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ir73b"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(832, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4c2h"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(896, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n2nfg"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(960, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5tsju"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(1024, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qcp0o"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(1088, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3s8t1"]
-atlas = ExtResource("1_to1yy")
+atlas = ExtResource("3_yx85k")
 region = Rect2(1152, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3dpxp"]
+resource_local_to_scene = true
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_720fu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cq3p0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xrvdb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1riuc")
+}],
+"loop": false,
+"name": &"Aimbot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_26l3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nsecx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_euxad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_mjvwu")
+}],
+"loop": true,
+"name": &"Gigabyte",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_enpql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ubfer")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8723t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_rdnv1")
+}],
+"loop": true,
+"name": &"Megabyte",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qvxsb")
@@ -141,25 +216,59 @@ animations = [{
 "texture": SubResource("AtlasTexture_3s8t1")
 }],
 "loop": true,
-"name": &"default",
+"name": &"default (old)",
 "speed": 24.0
 }]
 
-[node name="Enemy" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_xaw2t"]
+radius = 32.0156
+
+[node name="Enemy" type="RigidBody2D" groups=["Enemies"]]
+position = Vector2(37, 33)
+collision_layer = 16
+collision_mask = 256
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+lock_rotation = true
 script = ExtResource("1_m52gn")
 bullet_scene = ExtResource("2_yxds1")
+powerupScene = ExtResource("3_yc7vu")
+currentState = 3
+currentType = 4
+bulletLaunchSpeedMultiplier = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2.5, 2.5)
+material = SubResource("ShaderMaterial_q6443")
+rotation = 1.5708
+scale = Vector2(0.167, 0.167)
 sprite_frames = SubResource("SpriteFrames_3dpxp")
-frame_progress = 0.58604
+animation = &"Megabyte"
 
 [node name="BulletLauncher" type="Node2D" parent="."]
+position = Vector2(0, 18)
+
+[node name="BulletLauncher2" type="Node2D" parent="."]
+position = Vector2(-26, 16)
+
+[node name="BulletLauncher3" type="Node2D" parent="."]
+position = Vector2(24, 17)
+
+[node name="BulletLauncher4" type="Node2D" parent="."]
+position = Vector2(-59, 19)
+
+[node name="BulletLauncher5" type="Node2D" parent="."]
+position = Vector2(60, 19)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="BulletTimer" type="Timer" parent="."]
-wait_time = 0.1
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2)
+shape = SubResource("CircleShape2D_xaw2t")
+
+[connection signal="body_entered" from="." to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="BulletTimer" to="." method="_on_timer_timeout"]
